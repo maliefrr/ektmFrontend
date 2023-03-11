@@ -7,7 +7,7 @@ module.exports = function(app) {
       target: 'https://ektm-backend.up.railway.app',
       changeOrigin: true,
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'ektmfrontend-frontend.up.railway.app',
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
