@@ -17,7 +17,7 @@ const ShowProfile = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/mahasiswa/profile/${username}`)
+                const response = await axios.get(`https://ektm-backend.up.railway.app/api/mahasiswa/profile/${username}`)
                 setData({
                     name : response.data.mahasiswa.name,
                     prodi: response.data.mahasiswa.prodi,

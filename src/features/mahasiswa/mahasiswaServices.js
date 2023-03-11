@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = "http://localhost:5000/api/mahasiswa"
+const API_URL = "https://ektm-backend.up.railway.app/api/mahasiswa"
 
 // show all mahasiswa data
 const getMahasiswaData = async (token) => {

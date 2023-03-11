@@ -33,7 +33,7 @@ const Dashboard = () => {
         const fetchData = async () => {
         setIsLoading(true);
         try {
-            const response = await axios.get(`http://localhost:5000/api/mahasiswa/profile/${user.data.username}`);
+            const response = await axios.get(`https://ektm-backend.up.railway.app/api/mahasiswa/profile/${user.data.username}`);
             setData(response.data.mahasiswa);
         } catch (err) {
             setError(err);

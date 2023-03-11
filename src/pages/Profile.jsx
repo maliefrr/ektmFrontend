@@ -32,7 +32,7 @@ const Profile = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const responseUser = await axios.get(`http://localhost:5000/api/users/profile/${user.data.username}`)
+        const responseUser = await axios.get(`https://ektm-backend.up.railway.app/api/users/profile/${user.data.username}`)
         setDataUser({
           name: responseUser.data.data.name,
           username: responseUser.data.data.username,
