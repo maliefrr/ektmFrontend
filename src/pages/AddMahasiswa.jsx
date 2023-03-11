@@ -60,7 +60,7 @@ const AddMahasiswa = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        setFormData({name,nim,prodi,alamat,jenis_kelamin,gol_darah})
+        await setFormData({name,nim,prodi,alamat,jenis_kelamin,gol_darah})
         const data = new FormData();
         data.append("name",formData.name)
         data.append("nim",formData.nim)
@@ -69,7 +69,7 @@ const AddMahasiswa = () => {
         data.append("jenis_kelamin",formData.jenis_kelamin)
         data.append("gol_darah",formData.gol_darah)
         data.append("pas_foto",file)
-        dispatch(addMahasiswa(data))
+        await dispatch(addMahasiswa(data))
         toast.success("Data Mahasiswa berhasil ditambahkan")
         navigate('/dashboard')
     }
