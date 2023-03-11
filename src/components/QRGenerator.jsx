@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const QRGenerator = (props) => {
     const { user } = useSelector((state) => state.auth);
-    const [data, setData] = useState(`http://localhost:3000/profile/${user.data.username}`);
+    const [data] = useState(`http://localhost:3000/profile/${user.data.username}`);
     const [qrSize, setQRSize] = useState(64);
     const qrContainerRef = useRef(null);
 
