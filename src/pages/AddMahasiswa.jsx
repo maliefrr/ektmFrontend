@@ -17,6 +17,8 @@ const AddMahasiswa = () => {
         alamat: "",
         jenis_kelamin: "",
         gol_darah: "",
+        angkatan: "",
+        status: ""
     })
 
     const [file, setFile] = useState(null)
@@ -24,7 +26,7 @@ const AddMahasiswa = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {mahasiswa,mahasiswaIsError,mahasiswaIsLoading,mahasiswaMessage} = useSelector((state) => state.mahasiswa)
-    const {name,nim,prodi,alamat,jenis_kelamin,gol_darah} = formData
+    const {name,nim,prodi,alamat,jenis_kelamin,gol_darah,angkatan,status} = formData
 
     const onChange = (e) => {
         setFormData((prev) => ({
@@ -60,7 +62,7 @@ const AddMahasiswa = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        await setFormData({name,nim,prodi,alamat,jenis_kelamin,gol_darah})
+        await setFormData({name,nim,prodi,alamat,jenis_kelamin,gol_darah,angkatan,status})
         const data = new FormData();
         data.append("name",formData.name)
         data.append("nim",formData.nim)
@@ -68,6 +70,8 @@ const AddMahasiswa = () => {
         data.append("alamat",formData.alamat)
         data.append("jenis_kelamin",formData.jenis_kelamin)
         data.append("gol_darah",formData.gol_darah)
+        data.append("angkatan",formData.angkatan)
+        data.append("status",formData.status)
         data.append("pas_foto",file)
         await dispatch(addMahasiswa(data))
         toast.success("Data Mahasiswa berhasil ditambahkan")
@@ -92,6 +96,7 @@ const AddMahasiswa = () => {
                     <InputForm id='nama' type='text' name='name' placeholder="Nama" label="Nama" value={name} onChange={onChange}/>
                     <InputForm id='nim' type='text' name='nim' placeholder="Nomor Induk Mahasiswa" label="Nomor Induk Mahasiswa" value={nim} onChange={onChange}/>
                     <InputForm id='prodi' type='text' name='prodi' placeholder="Program Studi" label="Program Studi" value={prodi} onChange={onChange}/>
+                    <InputForm id='angkatan' type='text' name='angkatan' placeholder="Angkatan" label="Angkatan" value={angkatan} onChange={onChange}/>
                     <InputForm id='alamat' type='text' name='alamat' placeholder="Alamat" label="Alamat" value={alamat} onChange={onChange}/>
                     <label htmlFor='gol_darah' className="sm:mb-8">
                         <div className="text-slate-800 mb-2">
@@ -116,6 +121,19 @@ const AddMahasiswa = () => {
                         </option>
                         <option value="Pria">L</option>
                         <option value="Wanita">P</option>
+                    </select>
+                    </label> 
+                    <label htmlFor='jenis_kelamin' className="sm:mb-8">
+                        <div className="text-slate-800 mb-2">
+                            Status
+                        </div>
+                    <select className="border rounded shadow-lg py-1 px-3 focus:ring-1 focus:border-sky-600 focus:ring-sky-500 focus:outline-none w-full invalid:focus:border-red-500 invalid:focus:ring-red-500 peer" value={status} onChange={onChange} name="jenis_kelamin">
+                        <option value="default" disabled>
+                            Status
+                        </option>
+                        <option value="aktif">Mahasiswa Aktif</option>
+                        <option value="cuti">Cuti</option>
+                        <option value="alumni">Alumni</option>
                     </select>
                     </label> 
                     <InputForm id='pas_foto' type='file' name='pas_foto' placeholder="Pas Foto" label="Pas Foto" onChange={fileChange}/>
