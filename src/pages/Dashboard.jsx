@@ -101,8 +101,8 @@ const Dashboard = () => {
                 <div className='flex-1 h-full'>
                     {user.data.role === "admin" ? (
                         <>
-                        <User />
-                        <Mahasiswa />
+                         <User />
+                        <Mahasiswa /> 
                         </>
                     ) : (
                         <>

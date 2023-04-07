@@ -68,9 +68,6 @@ const User = () => {
                                             <td className='px-4 py-2 border-2 border-black'>{user.username}</td>
                                             <td className='px-4 py-2 border-2 border-black'>{user.email}</td>
                                             <td className='px-4 py-2 border-2 border-black'>
-                                                <button className="px-2">
-                                                    Edit
-                                                </button>
                                                 <button className="px-2" onClick={() => {toast.success("data has been successfully deleted"); dispatch(deleteUser(user.id))}}>
                                                     Delete
                                                 </button>
