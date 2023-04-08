@@ -15,10 +15,10 @@ const AddMahasiswa = () => {
         nim: "",
         prodi: "",
         alamat: "",
-        jenis_kelamin: "",
-        gol_darah: "",
+        jenis_kelamin: "default",
+        gol_darah: "default",
         angkatan: "",
-        status: ""
+        status: "default"
     })
 
     const [file, setFile] = useState(null)
@@ -79,8 +79,8 @@ const AddMahasiswa = () => {
     }
   return (
     <>
-    <div className='font-arima bg-gradient-to-r from-sky-500 to-gray-400 lg:h-full md:h-screen h-screen'>
-        <main className="max-w-screen-2xl flex items-center mx-auto h-screen">
+    <div className='font-arima bg-gradient-to-r from-sky-500 to-gray-400 lg:h-full'>
+        <main className="max-w-screen-2xl flex items-center mx-auto">
             <div className="fixed sm:top-100 sm:bottom-100 lg:top-0 lg:bottom-0 left-0 right-0 flex h-full">
                 <img src={logo} alt="logo" width="250" className="m-auto" />
             </div>
@@ -123,11 +123,11 @@ const AddMahasiswa = () => {
                         <option value="Wanita">P</option>
                     </select>
                     </label> 
-                    <label htmlFor='jenis_kelamin' className="sm:mb-8">
+                    <label htmlFor='status' className="sm:mb-8">
                         <div className="text-slate-800 mb-2">
                             Status
                         </div>
-                    <select className="border rounded shadow-lg py-1 px-3 focus:ring-1 focus:border-sky-600 focus:ring-sky-500 focus:outline-none w-full invalid:focus:border-red-500 invalid:focus:ring-red-500 peer" value={status} onChange={onChange} name="jenis_kelamin">
+                    <select className="border rounded shadow-lg py-1 px-3 focus:ring-1 focus:border-sky-600 focus:ring-sky-500 focus:outline-none w-full invalid:focus:border-red-500 invalid:focus:ring-red-500 peer" value={status} onChange={onChange} name="status">
                         <option value="default" disabled>
                             Status
                         </option>
