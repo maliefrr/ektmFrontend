@@ -40,7 +40,7 @@ const Profile = () => {
           email: responseUser.data.data.email
         })
         if(user.data.role === "mahasiswa") {
-          const response = await axios.get(`http://localhost:5000/api/mahasiswa/profile/${user.data.username}`);
+          const response = await axios.get(`https://ektm-backend.up.railway.app/api/mahasiswa/profile/${user.data.username}`);
           setData({
             name: response.data.mahasiswa.name,
             prodi: response.data.mahasiswa.prodi,
@@ -84,7 +84,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:5000/api/mahasiswa/edit/${user.data.username}`,{
+      const response = await axios.put(`https://ektm-backend.up.railway.app/api/mahasiswa/edit/${user.data.username}`,{
         name,
         prodi,
         gol_darah,
@@ -99,7 +99,7 @@ const Profile = () => {
   const handleSubmitUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:5000/api/users/edit/${user.data.username}`,{
+      const response = await axios.put(`https://ektm-backend.up.railway.app/api/users/edit/${user.data.username}`,{
         email
       })
       toast.success(response.data.message)

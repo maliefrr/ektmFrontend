@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Mahasiswa from './pages/Mahasiswa';
 import User from './pages/User';
 import ShowProfile from './pages/ShowProfile';
+import EditMahasiswa from './pages/EditMahasiswa';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/dashboard/me' element={<Profile/>}/>
           <Route path='/add/mahasiswa' element={<AddMahasiswa/>}/>
           <Route path='/profile/:username' element={<ShowProfile/>}/>
+          <Route path='/mahasiswa/edit/:username' element={<EditMahasiswa/>}/>
         </Routes>
       </Router>
       </div>

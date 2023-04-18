@@ -95,7 +95,7 @@ const SideBar = (props) => {
                         {user.data.role === "admin" ? (
                         <>
                             <li className='py-2 px-6'>
-                                <Link to={"/dashboard/users"} className="block text-white hover:bg-gray-700 rounded-full py-1 px-3">Users</Link>
+                                <Link to={"/dashboard/users"} className="block text-white hover:bg-gray-700 rounded-full py-1 px-3">User</Link>
                             </li>
                             <li className='py-2 px-6'>
                                 <Link to={"/dashboard/mahasiswa"} className="block text-white hover:bg-gray-700 rounded-full py-1 px-3">Mahasiswa</Link>
