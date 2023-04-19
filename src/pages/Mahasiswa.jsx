@@ -8,6 +8,7 @@ import { logout } from '../features/auth/authSlice';
 import { RotatingLines } from  'react-loader-spinner'
 import { getMahasiswa,mahasiswaReset } from '../features/mahasiswa/mahasiswaSlice'
 import SideBar from '../components/SideBar'
+import axios from 'axios'
 const Mahasiswa = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -88,7 +89,13 @@ const Mahasiswa = () => {
                                             <td className='px-4 py-2 border-2 border-black'>{mahasiswa.name}</td>
                                             <td className='px-4 py-2 border-2 border-black'>{mahasiswa.prodi}</td>
                                             <td className='px-4 py-2 border-2 border-black'>
-                                                <button className="px-2 ">
+                                                <button className="px-2 " onClick={async () => {
+                                                    const response = await axios.put(`https://ektm-backend.up.railway.app/api/users/edit/password/${mahasiswa.nim}`,{
+                                                        password : `${mahasiswa.nim}`
+                                                        })
+                                                        toast.success(response.data.message)
+                                                        console.log(response.data)
+                                                }}>
                                                     Reset Password
                                                 </button>
                                                 <button className="px-2">
