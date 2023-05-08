@@ -46,28 +46,9 @@ export const getMahasiswa = createAsyncThunk(
     }
   }
 )
-// Get mahasiswa
-// export const getMahasiswaDetail = createAsyncThunk(
-//   'mahasiswa/getMahasiswa',
-//   async (thunkAPI,payload) => {
-//     const username = payload;
-//     try {
-//       const token = thunkAPI.getState().auth.user.data.token
-//       return await mahasiswaService.getMahasiswaDataDetail(token,username)
-//     } catch (error) {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString()
-//       return thunkAPI.rejectWithValue(message)
-//     }
-//   }
-// )
+
 
 // get mahasiswa detail
-
 export const getMahasiswaDetail = createAsyncThunk(
   'mahasiswa/detail',
   async (_, { rejectWithValue }, {username}) => {
@@ -82,24 +63,20 @@ export const getMahasiswaDetail = createAsyncThunk(
 
 
 
-// Delete user goal
-// export const deleteGoal = createAsyncThunk(
-//   'goals/delete',
-//   async (id, thunkAPI) => {
-//     try {
-//       const token = thunkAPI.getState().auth.user.token
-//       return await goalService.deleteGoal(id, token)
-//     } catch (error) {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString()
-//       return thunkAPI.rejectWithValue(message)
-//     }
-//   }
-// )
+// Delete mahasiswa
+export const deleteMahasiswa = createAsyncThunk(
+  'mahasiswa/delete',
+  async (nim,thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.data.token
+      return await mahasiswaService.deleteMahasiswa(nim,token)
+
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
 
 export const mahasiswaSlice = createSlice({
   name: 'mahasiswa',
@@ -135,34 +112,14 @@ export const mahasiswaSlice = createSlice({
         state.mahasiswaIsError = true
         state.mahasiswaMessage = action.payload
       })
-      // .addCase(getMahasiswaDetail.pending, (state) => {
-      //   state.mahasiswaIsLoading = true
-      // })
-      // .addCase(getMahasiswaDetail.fulfilled, (state, action) => {
-      //   state.mahasiswaIsLoading = false
-      //   state.mahasiswaIsSuccess = true
-      //   state.mahasiswa = action.payload
-      // })
-      // .addCase(getMahasiswaDetail.rejected, (state, action) => {
-      //   state.mahasiswaIsLoading = false
-      //   state.mahasiswaIsError = true
-      //   state.mahasiswaMessage = action.payload
-      // })
-    //   .addCase(deleteGoal.pending, (state) => {
-    //     state.isLoading = true
-    //   })
-    //   .addCase(deleteGoal.fulfilled, (state, action) => {
-    //     state.isLoading = false
-    //     state.isSuccess = true
-    //     state.goals = state.goals.filter(
-    //       (goal) => goal._id !== action.payload.id
-    //     )
-    //   })
-    //   .addCase(deleteGoal.rejected, (state, action) => {
-    //     state.isLoading = false
-    //     state.isError = true
-    //     state.message = action.payload
-    //   })
+      .addCase(deleteMahasiswa.pending, (state) => {
+        state.mahasiswaIsLoading = true
+      })
+      .addCase(deleteMahasiswa.fulfilled, (state,action) => {
+        state.mahasiswaIsLoading = false
+        state.mahasiswaIsSuccess = true
+        state.mahasiswa = state.mahasiswa.filter(mahasiswa => mahasiswa.id !== action.payload.id)
+      })
   },
 })
 

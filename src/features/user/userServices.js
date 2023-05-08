@@ -9,8 +9,9 @@ const getUserData = async (token) => {
             Authorization : `Bearer ${token}`
         }
     }
-
+ 
     const response = await axios.get(`${API_URL}/all`,config)
+    console.log(response)
     return response.data.data
 }
 
@@ -20,7 +21,6 @@ const deleteUser = async (userId,token) => {
             Authorization: `Bearer ${token}`
         }
     }
-
     const response = await axios.delete(`${API_URL}/delete/${userId}`,config)
     return response.data.data
 }

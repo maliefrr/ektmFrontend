@@ -102,6 +102,7 @@ const Profile = () => {
       const response = await axios.put(`https://ektm-backend.up.railway.app/api/users/edit/${user.data.username}`,{
         email
       })
+      console.log(response.data)
       toast.success(response.data.message)
     } catch (error) {
       toast.error(error)

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { RotatingLines } from  'react-loader-spinner'
 import { useEffect } from 'react'
 import {Modal} from 'react-responsive-modal'
-import { getMahasiswa,mahasiswaReset } from '../features/mahasiswa/mahasiswaSlice'
+import { getMahasiswa,mahasiswaReset, deleteMahasiswa } from '../features/mahasiswa/mahasiswaSlice'
 import 'react-responsive-modal/styles.css';
 import {toast} from "react-toastify"
 import {useState} from 'react'
@@ -22,10 +22,14 @@ const Mahasiswa = () => {
         gol_darah:"",
         jenis_kelamin: ""
     })
-    const handleDeleteMahasiswa = (id) => {
-        console.log(id)
-    }
-
+    const handleDeleteMahasiswa = (nim) => {
+        dispatch(deleteMahasiswa(nim));
+        // Add query parameter to URL
+        const url = new URL(window.location.href);
+        url.searchParams.set("deleted", "true");
+        window.location.href = url.toString();
+      };
+      
 
     const handleMahasiswaModalClose = () => {
         setOpenMahasiswaDetail(false)
@@ -40,6 +44,16 @@ const Mahasiswa = () => {
         })
     }
     useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const isDeleted = urlParams.get("deleted") === "true";
+        if (isDeleted) {
+            toast.success("Mahasiswa has been successfully deleted");
+            // Remove query parameter from URL
+            urlParams.delete("deleted");
+            const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+            window.history.replaceState({}, "", newUrl);
+          }
+
         if (mahasiswaIsError) {
         toast.error(mahasiswaMessage)
         }
@@ -86,7 +100,7 @@ const Mahasiswa = () => {
                                             <td className='px-4 py-2 border-2 border-black'>{mahasiswa.prodi}</td>
                                             <td className='px-4 py-2 border-2 border-black'>
                                                 <Link className='px-2' to={`/mahasiswa/edit/${mahasiswa.nim}`}>Edit</Link>
-                                                <button className="px-2" onClick={() => handleDeleteMahasiswa(mahasiswa.id)}>
+                                                <button className="px-2" onClick={() => handleDeleteMahasiswa(mahasiswa.nim)}>
                                                     Delete
                                                 </button>
                                                 <button className="px-2" onClick={() => {setMahasiswaDetail({

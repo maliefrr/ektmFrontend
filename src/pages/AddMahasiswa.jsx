@@ -138,7 +138,7 @@ const AddMahasiswa = () => {
                     </label> 
                     <InputForm id='pas_foto' type='file' name='pas_foto' placeholder="Pas Foto" label="Pas Foto" onChange={fileChange}/>
                     <Button text="Add Mahasiswa" type="Submit"/>
-            <Button text="Logout" onClick={() => {dispatch(logout()); navigate('/')}} className="mx-auto"/>
+            {/* <Button text="Logout" onClick={() => {dispatch(logout()); navigate('/')}} className="mx-auto"/> */}
                     </form>
                 </div>
             </div>

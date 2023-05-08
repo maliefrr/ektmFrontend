@@ -13,11 +13,7 @@ const getMahasiswaData = async (token) => {
     const response = await axios.get(`${API_URL}/all`,config)
     return response.data.data
 }
-// const getMahasiswaDataDetail = async (token,data) => {
-//     const response = await axios.get(`${API_URL}/profile/${data}`)
-//     console.log(response.data)
-//     return response.data.data
-// }
+
 
 // add new mahasiswa
 const addMahasiswa = async (mahasiswaData) => {
@@ -36,8 +32,20 @@ const getMahasiswaDetail = async(authUser) => {
     return response.data.mahasiswa
 }
 
+// delete mahasiswa
+const deleteMahasiswa = async (nim,token) => {
+    const config = {
+        headers : {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.delete(`${API_URL}/delete/${nim}`,config)
+    return response.data.data
+}
+
 const mahasiswaService = {
-    getMahasiswaData,addMahasiswa,getMahasiswaDetail
+    getMahasiswaData,addMahasiswa,getMahasiswaDetail, deleteMahasiswa
 }
 
 export default mahasiswaService
