@@ -95,11 +95,6 @@ const AddMahasiswa = () => {
                     <InputForm id='prodi' type='text' name='prodi' placeholder="Program Studi" label="Program Studi" value={prodi} onChange={onChange}/>
                     <InputForm id='angkatan' type='text' name='angkatan' placeholder="Angkatan" label="Angkatan" value={angkatan} onChange={onChange}/>
                     <InputForm id='alamat' type='text' name='alamat' placeholder="Alamat" label="Alamat" value={alamat} onChange={onChange}/>
-                    <label htmlFor='gol_darah' className="sm:mb-8">
-                        <div className="text-slate-800 mb-2">
-                            Golongan Darah
-                        </div>
-                    </label> 
                     <label htmlFor='jenis_kelamin' className="sm:mb-8">
                         <div className="text-slate-800 mb-2">
                             Jenis Kelamin
