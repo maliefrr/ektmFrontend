@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import InputForm from '../components/InputForm'
 import Button from '../components/Button'
-import { logout } from '../features/auth/authSlice'
 import logo from "../assets/logo-uho.png"
 import { toast } from 'react-toastify'
 import { useDispatch,useSelector } from 'react-redux'
