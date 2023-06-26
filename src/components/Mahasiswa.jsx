@@ -19,7 +19,6 @@ const Mahasiswa = () => {
         nim:"",
         alamat:"",
         prodi:"",
-        gol_darah:"",
         jenis_kelamin: ""
     })
     const handleDeleteMahasiswa = (nim) => {
