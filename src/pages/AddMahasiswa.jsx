@@ -16,7 +16,6 @@ const AddMahasiswa = () => {
         alamat: "",
         jenis_kelamin: "default",
         gol_darah: "default",
-        angkatan: "",
         status: "default"
     })
 
@@ -25,7 +24,7 @@ const AddMahasiswa = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {mahasiswa,mahasiswaIsError,mahasiswaIsLoading,mahasiswaMessage} = useSelector((state) => state.mahasiswa)
-    const {name,nim,prodi,alamat,jenis_kelamin,gol_darah,angkatan,status} = formData
+    const {name,nim,prodi,alamat,jenis_kelamin,angkatan,status} = formData
 
     const onChange = (e) => {
         setFormData((prev) => ({
@@ -61,14 +60,13 @@ const AddMahasiswa = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        await setFormData({name,nim,prodi,alamat,jenis_kelamin,gol_darah,angkatan,status})
+        await setFormData({name,nim,prodi,alamat,jenis_kelamin,angkatan,status})
         const data = new FormData();
         data.append("name",formData.name)
         data.append("nim",formData.nim)
         data.append("prodi",formData.prodi)
         data.append("alamat",formData.alamat)
         data.append("jenis_kelamin",formData.jenis_kelamin)
-        data.append("gol_darah",formData.gol_darah)
         data.append("angkatan",formData.angkatan)
         data.append("status",formData.status)
         data.append("pas_foto",file)
@@ -101,21 +99,13 @@ const AddMahasiswa = () => {
                         <div className="text-slate-800 mb-2">
                             Golongan Darah
                         </div>
-                    <select className="border rounded shadow-lg py-1 px-3 focus:ring-1 focus:border-sky-600 focus:ring-sky-500 focus:outline-none w-full invalid:focus:border-red-500 invalid:focus:ring-red-500 peer" value={gol_darah} onChange={onChange} name="gol_darah">
-                        <option value="default" disabled>Golongan Darah</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="AB">AB</option>
-                        <option value="O">O</option>
-                        <option value="-">-</option>
-                    </select>
                     </label> 
                     <label htmlFor='jenis_kelamin' className="sm:mb-8">
                         <div className="text-slate-800 mb-2">
                             Jenis Kelamin
                         </div>
                     <select className="border rounded shadow-lg py-1 px-3 focus:ring-1 focus:border-sky-600 focus:ring-sky-500 focus:outline-none w-full invalid:focus:border-red-500 invalid:focus:ring-red-500 peer" value={jenis_kelamin} onChange={onChange} name="jenis_kelamin">
-                        <option value="default" disabled>
+                        <option value="default" disabled={true}>
                             Jenis Kelamin
                         </option>
                         <option value="Pria">L</option>
@@ -127,7 +117,7 @@ const AddMahasiswa = () => {
                             Status
                         </div>
                     <select className="border rounded shadow-lg py-1 px-3 focus:ring-1 focus:border-sky-600 focus:ring-sky-500 focus:outline-none w-full invalid:focus:border-red-500 invalid:focus:ring-red-500 peer" value={status} onChange={onChange} name="status">
-                        <option value="default" disabled>
+                        <option value="default" disabled={true}>
                             Status
                         </option>
                         <option value="aktif">Mahasiswa Aktif</option>
